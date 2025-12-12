@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANIME TRACKER</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">ANIME TRACKER</div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for anime...">
+            <button onclick="searchAnime()">Search</button>
+        </div>
+    </header>
+
+    <nav class="tab-container">
+        <button class="tab-btn active" onclick="switchTab('all')" id="tab-all">All</button>
+        <button class="tab-btn" onclick="switchTab('watching')" id="tab-watching">Watching</button>
+        <button class="tab-btn" onclick="switchTab('completed')" id="tab-completed">Completed</button>
+        <button class="tab-btn" onclick="switchTab('plan_to_watch')" id="tab-plan_to_watch">Plan to Watch</button>
+    </nav>
+
+    <main>
+        <div id="loading" style="display:none;">Loading...</div>
+        <div class="anime-grid" id="animeGrid">
+        </div>
+    </main>
+
+    <div id="animeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+
+            <div class="modal-body">
+                <div class="modal-img-wrapper">
+                    <img id="modalImg" src="" alt="Anime Cover">
+                </div>
+
+                <div class="modal-details">
+                    <h2 id="modalTitle">Anime Title</h2>
+                    <p id="modalMeta">Score: 0.0 • 12 Eps</p>
+                    <p id="modalSynopsis" class="synopsis">Description...</p>
+
+                    <hr>
+
+                    <div class="control-group">
+                        <label>Status:</label>
+                        <select id="modalStatus">
+                            <option value="watching">Watching</option>
+                            <option value="completed">Completed</option>
+                            <option value="plan_to_watch">Plan to Watch</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Episodes Watched:</label>
+                        <div class="ep-control">
+                            <input type="number" id="modalProgress" value="0" min="0">
+                            <span id="modalTotalEps">/ ?</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="btn-save" onclick="saveToLibrary()">Save to My List</button>
+                        <button class="btn-delete" id="btnDelete" onclick="deleteFromLibrary()" style="display:none;">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
